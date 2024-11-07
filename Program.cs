@@ -1,13 +1,13 @@
 ﻿namespace Name
 {
     class Neuron{ //item b
-        private List<double> inputsList;
-        private List<double> weightsList;
+        private double[] inputsList;
+        private double[] weightsList;
         private Random random;
 
-        public Neuron(){
-            inputsList=new List<double>(4);
-            weightsList=new List<double>(4);
+        public Neuron(){ //constructor
+            inputsList=new double[4];
+            weightsList=new double[4];
             random=new Random();
 
             for (int i = 0; i < 4; i++)
@@ -16,18 +16,17 @@
             }
         }
 
-        public void Control(List<double> inputValues){
-            if (inpinputValuesuts.Length!=4)
+        public void Control(double[] inputValues){
+            if (inputValues.Length!=4)
             {
                 throw new ArgumentException("Input count must be 4.");
             }
-            inputsList = new List<double>(inputValues);
         }
 
         public double Calculate(){ //calculate neuron output
             double result=0.0;
             
-            for (int i = 0; i < inputsList.Count; i++)
+            for (int i = 0; i < inputsList.Length; i++)
             {
                 result += inputsList[i] * weightsList[i];
             }
@@ -36,6 +35,9 @@
         }
     }
     
+    class NeuralNetwork {
+        private Neuron[] neurons;
+    }
     class Program{
         
         //item a
